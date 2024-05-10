@@ -10,11 +10,13 @@ import React, { useRef, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 import islandScene from '../asset/3d/island.glb';
+import { a } from '@react-spring/three';
+
 
 const Island = (props) => {
     const { nodes, materials } = useGLTF('/island.glb')
     return (
-        <group {...props} dispose={null}>
+        <a.group {...props} dispose={null}>
             <mesh
                 castShadow
                 receiveShadow
@@ -57,7 +59,7 @@ const Island = (props) => {
                 geometry={nodes.pCube11_rocks1_0.geometry}
                 material={materials.PaletteMaterial001}
             />
-        </group>
+        </a.group>
     )
 }
 
