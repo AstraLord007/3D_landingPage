@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 const Contact = () => {
+    const formRef = useRef(null);
     const [form, setForm] = useState({ name: '', email: '', message: '' })
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleChange = () => { };
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value })
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+    };
+
     const handleFocus = () => { };
     const handleBlur = () => { };
 
@@ -15,6 +24,7 @@ const Contact = () => {
 
                 <form
                     className='w-full flex flex-col gap-7 mt-14'
+                    onSubmit={handleSubmit}
                 >
                     <label className='text-black-500 font-semibold'>
                         Name
