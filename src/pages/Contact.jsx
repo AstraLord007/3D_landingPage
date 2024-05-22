@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const formRef = useRef(null);
@@ -12,6 +13,10 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsLoading(true);
+
+        emailjs.sendForm(
+
+        )
     };
 
     const handleFocus = () => { };
