@@ -14,9 +14,27 @@ const Contact = () => {
         e.preventDefault();
         setIsLoading(true);
 
-        emailjs.sendForm(
+        emailjs.send(
+            import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+            import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+            {
+                from_name: form.name,
+                to_name: "Mauri",
+                from_email: form.email,
+                to_email: 'mauridlenz@gmail.com',
+                message: form.message
+            },
+            import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        ).then(() => {
+            setIsLoading(false);
+            //to do show success message and hide alert
 
-        )
+            setForm({ name: '', email: '', message: '' })
+        }).catch((error) => {
+            setIsLoading(false);
+            console.log(error);
+            //to do show error message
+        })
     };
 
     const handleFocus = () => { };
