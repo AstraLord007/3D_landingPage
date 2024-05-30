@@ -115,7 +115,11 @@ const Contact = () => {
                     }}
                 >
                     <Suspense fallback={<Loader />}>
-                        <Fox />
+                        <Fox
+                            position={[0.5, 0.35, 0]}
+                            rotation={[12, 0, 0]}
+                            scale={[0.5, 0.5, 0.5]}
+                        />
                     </Suspense>
                 </Canvas>
             </div>
